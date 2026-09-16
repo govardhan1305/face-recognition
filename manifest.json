@@ -1,12 +1,24 @@
 {
-  "name": "FaceAttend AI",
-  "short_name": "FaceAttend",
-  "description": "Face Recognition Attendance PWA",
-  "start_url": "./index.html",
+  "name": "Nagarjuna Degree College - AI Attendance System",
+  "short_name": "NDC Attendance",
+  "description": "AI Face Recognition Attendance System for Nagarjuna Degree College",
+  "start_url": "./",
   "scope": "./",
   "display": "standalone",
-  "background_color": "#f5f7fb",
-  "theme_color": "#6d28d9",
   "orientation": "portrait-primary",
-  "icons": []
+  "background_color": "#f4f6f8",
+  "theme_color": "#123b2a",
+  "lang": "en-IN",
+  "categories": [
+    "education",
+    "productivity"
+  ],
+  "icons": [
+    {
+      "src": "./assets/ndc-logo.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "any"
+    }
+  ]
 }
