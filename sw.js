@@ -1,4 +1,4 @@
-const CACHE_NAME = "ndc-attendance-v1";
+const CACHE_NAME = "ndc-attendance-v2";
 
 const APP_FILES = [
     "./",
