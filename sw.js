@@ -1,4 +1,4 @@
-const CACHE_NAME = "ndc-attendance-v2";
+const CACHE_NAME = "ndc-attendance-v3";
 
 const APP_FILES = [
     "./",
@@ -7,46 +7,25 @@ const APP_FILES = [
     "./assets/ndc-logo.jpeg"
 ];
 
-
-/* INSTALL */
-
 self.addEventListener("install", event => {
-
     event.waitUntil(
-
         caches.open(CACHE_NAME)
             .then(cache => cache.addAll(APP_FILES))
             .then(() => self.skipWaiting())
-
     );
-
 });
 
-
-/* ACTIVATE */
-
 self.addEventListener("activate", event => {
-
     event.waitUntil(
-
         caches.keys().then(keys => {
-
             return Promise.all(
-
                 keys
                     .filter(key => key !== CACHE_NAME)
                     .map(key => caches.delete(key))
-
             );
-
         }).then(() => self.clients.claim())
-
     );
-
 });
-
-
-/* FETCH */
 
 self.addEventListener("fetch", event => {
 
@@ -55,7 +34,6 @@ self.addEventListener("fetch", event => {
     }
 
     event.respondWith(
-
         caches.match(event.request)
             .then(cachedResponse => {
 
@@ -82,20 +60,14 @@ self.addEventListener("fetch", event => {
                                         responseClone
                                     );
                                 });
-
                         }
 
                         return networkResponse;
 
                     })
                     .catch(() => {
-
                         return caches.match("./index.html");
-
                     });
-
             })
-
     );
-
 });
