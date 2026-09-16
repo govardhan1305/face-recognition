@@ -4,34 +4,31 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Nagarjuna Degree College | AI Attendance System</title>
-
-<meta name="theme-color" content="#123b2a">
-<meta name="description" content="Nagarjuna Degree College AI Face Recognition Attendance System">
+<title>Nagarjuna Degree College | AI Attendance</title>
 
 <link rel="manifest" href="./manifest.json">
+<meta name="theme-color" content="#0b5ed7">
 
-<script src="https://cdn.jsdelivr.net/npm/@vladmandic/face-api@1.7.12/dist/face-api.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/@vladmandic/face-api@1.7.12/dist/face-api.js"></script>
 
 <style>
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:Inter,Segoe UI,Arial,sans-serif;
+    font-family:"Segoe UI",Arial,sans-serif;
 }
 
 body{
-    background:#f4f6f8;
-    color:#172026;
+    background:#f4f7fb;
+    color:#172033;
 }
 
-/* ================= HEADER ================= */
-
-.college-header{
-    height:92px;
+/* HEADER */
+.top-header{
+    height:82px;
     background:#fff;
-    border-bottom:1px solid #dfe4e8;
+    border-bottom:1px solid #dbe4f0;
     display:flex;
     align-items:center;
     position:fixed;
@@ -42,129 +39,104 @@ body{
     box-shadow:0 2px 10px rgba(0,0,0,.05);
 }
 
-.college-logo{
-    position:absolute;
-    left:22px;
-    width:70px;
-    height:70px;
+.logo-box{
+    width:250px;
     display:flex;
     align-items:center;
-    justify-content:center;
+    padding-left:22px;
 }
 
-.college-logo img{
-    width:68px;
-    height:68px;
+.logo-box img{
+    width:58px;
+    height:58px;
     object-fit:contain;
-    border-radius:8px;
+    border-radius:50%;
 }
 
 .college-title{
-    width:100%;
+    position:absolute;
+    left:50%;
+    transform:translateX(-50%);
     text-align:center;
-    padding:0 100px;
+    white-space:nowrap;
 }
 
 .college-title h1{
-    font-size:24px;
+    color:#084298;
+    font-size:25px;
     font-weight:800;
-    letter-spacing:1.2px;
-    color:#123b2a;
+    letter-spacing:1px;
 }
 
 .college-title p{
-    margin-top:5px;
+    color:#4d6380;
     font-size:12px;
-    font-weight:700;
+    margin-top:4px;
     letter-spacing:1.5px;
-    color:#68737d;
+    font-weight:600;
 }
 
-/* ================= SIDEBAR ================= */
-
+/* SIDEBAR */
 .sidebar{
     position:fixed;
+    top:82px;
     left:0;
-    top:92px;
     bottom:0;
-    width:245px;
-    background:#102c21;
-    color:white;
+    width:250px;
+    background:#fff;
+    border-right:1px solid #dce5f0;
     padding:22px 14px;
-    overflow-y:auto;
     z-index:900;
 }
 
 .brand-small{
-    padding:0 12px 20px;
-    border-bottom:1px solid rgba(255,255,255,.12);
+    padding:12px 15px 20px;
+    border-bottom:1px solid #e5ebf3;
     margin-bottom:15px;
 }
 
-.brand-small strong{
-    font-size:15px;
+.brand-small h2{
+    color:#0b5ed7;
+    font-size:18px;
 }
 
 .brand-small span{
-    display:block;
-    color:#a9bbb2;
+    color:#728198;
     font-size:11px;
+    display:block;
     margin-top:4px;
 }
 
-.nav-title{
-    font-size:10px;
-    color:#8fa49a;
-    letter-spacing:1.2px;
-    margin:18px 12px 8px;
-}
-
-.nav-btn{
+.nav-item{
     width:100%;
-    border:0;
+    border:none;
     background:transparent;
-    color:#dce7e2;
-    padding:12px 13px;
+    color:#506176;
+    padding:13px 15px;
+    margin-bottom:5px;
     border-radius:9px;
     text-align:left;
     cursor:pointer;
-    margin-bottom:4px;
-    font-size:13px;
+    font-size:14px;
+    font-weight:600;
     transition:.2s;
 }
 
-.nav-btn:hover{
-    background:#1a4635;
+.nav-item:hover{
+    background:#edf5ff;
+    color:#0b5ed7;
 }
 
-.nav-btn.active{
-    background:#24744e;
+.nav-item.active{
+    background:#0b5ed7;
     color:white;
-    font-weight:700;
+    box-shadow:0 5px 14px rgba(11,94,215,.2);
 }
 
-.status-box{
-    margin-top:20px;
-    background:#173a2c;
-    padding:13px;
-    border-radius:10px;
-    font-size:12px;
-}
-
-.status-dot{
-    display:inline-block;
-    width:8px;
-    height:8px;
-    background:#4ade80;
-    border-radius:50%;
-    margin-right:6px;
-}
-
-/* ================= MAIN ================= */
-
+/* MAIN */
 .main{
-    margin-left:245px;
-    padding:122px 28px 40px;
+    margin-left:250px;
+    padding:112px 30px 35px;
 }
 
 .page{
@@ -175,349 +147,353 @@ body{
     display:block;
 }
 
-.page-head{
-    margin-bottom:22px;
+.page-title{
+    margin-bottom:25px;
 }
 
-.page-head h2{
+.page-title h2{
+    color:#172033;
     font-size:25px;
-    color:#172026;
 }
 
-.page-head p{
-    color:#707b84;
-    font-size:13px;
+.page-title p{
+    color:#7a8799;
     margin-top:5px;
+    font-size:14px;
 }
 
-/* ================= CARDS ================= */
-
-.grid{
+/* CARDS */
+.stats-grid{
     display:grid;
+    grid-template-columns:repeat(4,1fr);
     gap:18px;
+    margin-bottom:25px;
 }
 
-.stats{
-    grid-template-columns:repeat(4,1fr);
+.stat-card{
+    background:white;
+    border:1px solid #e0e7f0;
+    border-radius:13px;
+    padding:21px;
+    box-shadow:0 3px 12px rgba(30,60,90,.05);
+}
+
+.stat-card .label{
+    color:#77869b;
+    font-size:13px;
+}
+
+.stat-card h3{
+    color:#0b5ed7;
+    font-size:29px;
+    margin-top:8px;
 }
 
 .card{
     background:white;
-    border:1px solid #e1e6e9;
-    border-radius:14px;
-    padding:20px;
-    box-shadow:0 3px 12px rgba(0,0,0,.035);
+    border:1px solid #e0e7f0;
+    border-radius:13px;
+    padding:22px;
+    margin-bottom:22px;
+    box-shadow:0 3px 12px rgba(30,60,90,.05);
 }
 
-.stat-label{
-    color:#74808a;
-    font-size:12px;
+.card h3{
+    color:#1c2b40;
+    margin-bottom:17px;
 }
 
-.stat-value{
-    font-size:30px;
-    font-weight:800;
-    margin-top:8px;
-    color:#123b2a;
+/* BUTTONS */
+.btn{
+    border:none;
+    border-radius:8px;
+    padding:11px 17px;
+    cursor:pointer;
+    font-size:13px;
+    font-weight:700;
 }
 
-.stat-small{
-    font-size:11px;
-    color:#8a949c;
-    margin-top:4px;
+.btn-primary{
+    background:#0b5ed7;
+    color:#fff;
 }
 
-.two-col{
-    grid-template-columns:1.4fr .8fr;
-    margin-top:20px;
+.btn-primary:hover{
+    background:#084da8;
 }
 
-/* ================= TABLE ================= */
+.btn-secondary{
+    background:#eaf2ff;
+    color:#0b5ed7;
+}
 
-.table-wrap{
+.btn-danger{
+    background:#dc3545;
+    color:#fff;
+}
+
+.btn-success{
+    background:#198754;
+    color:#fff;
+}
+
+/* TABLE */
+.table-container{
     overflow-x:auto;
 }
 
 table{
     width:100%;
     border-collapse:collapse;
-    margin-top:10px;
 }
 
 th{
-    background:#f5f7f8;
-    color:#68737c;
-    font-size:11px;
+    background:#f0f5fb;
+    color:#52657d;
+    font-size:12px;
+    padding:13px;
     text-align:left;
-    padding:12px;
 }
 
 td{
-    padding:12px;
-    border-bottom:1px solid #edf0f2;
-    font-size:12px;
+    padding:13px;
+    border-bottom:1px solid #edf1f6;
+    color:#39485d;
+    font-size:13px;
 }
 
-.badge{
-    display:inline-block;
-    padding:5px 9px;
-    border-radius:20px;
-    font-size:10px;
-    font-weight:700;
+/* FORM */
+.form-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:18px;
 }
 
-.present{
-    background:#dcfce7;
-    color:#166534;
-}
-
-.absent{
-    background:#fee2e2;
-    color:#991b1b;
-}
-
-/* ================= BUTTONS ================= */
-
-.btn{
-    border:0;
-    padding:11px 16px;
-    border-radius:8px;
-    cursor:pointer;
-    font-weight:700;
-    font-size:12px;
-}
-
-.btn-primary{
-    background:#1d6847;
-    color:white;
-}
-
-.btn-primary:hover{
-    background:#155238;
-}
-
-.btn-secondary{
-    background:#edf2ef;
-    color:#17382b;
-}
-
-.btn-danger{
-    background:#fee2e2;
-    color:#a11b1b;
-}
-
-.actions{
+.form-group{
     display:flex;
-    gap:9px;
-    flex-wrap:wrap;
+    flex-direction:column;
 }
 
-/* ================= CAMERA ================= */
+.form-group label{
+    font-size:13px;
+    color:#52657d;
+    font-weight:600;
+    margin-bottom:7px;
+}
+
+.form-group input,
+.form-group select{
+    padding:12px;
+    border:1px solid #ccd7e5;
+    border-radius:8px;
+    outline:none;
+    font-size:14px;
+    background:white;
+}
+
+.form-group input:focus,
+.form-group select:focus{
+    border-color:#0b5ed7;
+    box-shadow:0 0 0 3px rgba(11,94,215,.08);
+}
+
+/* CAMERA */
+.camera-section{
+    max-width:850px;
+    margin:auto;
+}
 
 .camera-box{
-    background:#101616;
+    width:100%;
+    min-height:420px;
+    background:#101827;
     border-radius:14px;
     overflow:hidden;
     position:relative;
-    min-height:330px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
 }
 
 .camera-box video{
     width:100%;
-    height:100%;
-    min-height:330px;
+    max-height:520px;
     object-fit:cover;
     display:block;
 }
 
-.camera-label{
+.camera-placeholder{
+    color:#aebbd0;
+    text-align:center;
     position:absolute;
-    top:14px;
-    left:14px;
-    background:rgba(0,0,0,.65);
-    color:white;
-    padding:7px 10px;
-    border-radius:6px;
-    font-size:11px;
 }
 
-.camera-status{
-    position:absolute;
-    bottom:14px;
-    left:14px;
-    right:14px;
-    background:rgba(0,0,0,.68);
-    color:white;
-    padding:10px;
-    border-radius:8px;
-    font-size:12px;
+.camera-placeholder .camera-icon{
+    font-size:55px;
+    margin-bottom:12px;
 }
 
-/* ================= FORMS ================= */
+.camera-controls{
+    display:flex;
+    gap:10px;
+    margin-top:15px;
+    flex-wrap:wrap;
+}
 
-.form-grid{
+.recognition-result{
+    margin-top:18px;
+    padding:17px;
+    background:#edf5ff;
+    border:1px solid #cfe2ff;
+    border-radius:10px;
+    color:#084298;
+}
+
+/* QUICK ACTIONS */
+.quick-actions{
     display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:16px;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
 }
 
-.field label{
-    display:block;
-    font-size:11px;
+.quick-action{
+    padding:18px;
+    background:#f5f9ff;
+    border:1px solid #dceaff;
+    border-radius:10px;
+    cursor:pointer;
+    color:#0b5ed7;
     font-weight:700;
-    color:#56616a;
-    margin-bottom:6px;
 }
 
-.field input,
-.field select{
-    width:100%;
-    padding:11px 12px;
-    border:1px solid #d7dde1;
-    border-radius:8px;
-    outline:none;
-    background:#fff;
+.quick-action:hover{
+    background:#e9f2ff;
 }
 
-.field input:focus,
-.field select:focus{
-    border-color:#24744e;
-}
-
-/* ================= SEARCH ================= */
-
+/* SEARCH */
 .toolbar{
     display:flex;
     justify-content:space-between;
     gap:12px;
-    margin-bottom:15px;
+    margin-bottom:18px;
     flex-wrap:wrap;
 }
 
-.search{
-    padding:10px 13px;
-    border:1px solid #d7dde1;
+.search-input{
+    padding:11px 14px;
+    border:1px solid #ccd7e5;
     border-radius:8px;
+    min-width:250px;
     outline:none;
-    min-width:230px;
 }
 
-/* ================= IDENTITY ================= */
+/* BADGES */
+.badge{
+    display:inline-block;
+    padding:5px 9px;
+    border-radius:20px;
+    font-size:11px;
+    font-weight:700;
+}
 
-.identity{
-    margin-top:16px;
+.badge-present{
+    background:#d1e7dd;
+    color:#146c43;
+}
+
+/* DIAGNOSTICS */
+.diagnostic-box{
     padding:18px;
-    border-radius:12px;
-    background:#f3f8f5;
-    border:1px solid #d5e7dc;
+    background:#f7faff;
+    border:1px solid #dbe7f5;
+    border-radius:10px;
 }
 
-.identity h3{
-    color:#123b2a;
+.status{
+    margin-top:12px;
+    font-weight:700;
 }
 
-.identity p{
-    font-size:12px;
-    color:#6b747b;
-    margin-top:4px;
-}
-
-/* ================= ALERT ================= */
-
-.alert{
-    padding:12px 14px;
-    border-radius:8px;
-    font-size:12px;
-    margin-bottom:15px;
+/* MOBILE */
+.mobile-menu{
     display:none;
+    position:fixed;
+    top:82px;
+    left:0;
+    right:0;
+    background:white;
+    padding:10px;
+    border-bottom:1px solid #dce5f0;
+    z-index:950;
 }
 
-.alert.show{
-    display:block;
+.mobile-menu button{
+    width:100%;
+    padding:11px;
+    margin-bottom:5px;
+    border:none;
+    background:#f2f6fb;
+    border-radius:7px;
+    text-align:left;
 }
 
-.alert.success{
-    background:#dcfce7;
-    color:#166534;
-}
-
-.alert.error{
-    background:#fee2e2;
-    color:#991b1b;
-}
-
-.alert.info{
-    background:#e0f2fe;
-    color:#075985;
-}
-
-/* ================= REPORT ================= */
-
-.report-grid{
-    grid-template-columns:repeat(3,1fr);
-}
-
-.report-number{
-    font-size:27px;
-    font-weight:800;
-    color:#123b2a;
-}
-
-/* ================= MOBILE NAV ================= */
-
-.mobile-nav{
+.mobile-toggle{
     display:none;
+    position:absolute;
+    right:15px;
+    background:#0b5ed7;
+    color:white;
+    border:none;
+    padding:8px 11px;
+    border-radius:7px;
+    cursor:pointer;
 }
 
-/* ================= RESPONSIVE ================= */
+.empty{
+    text-align:center;
+    padding:35px;
+    color:#8795a8;
+}
+
+.footer{
+    text-align:center;
+    color:#8b98a9;
+    font-size:12px;
+    padding:25px 0 5px;
+}
 
 @media(max-width:1000px){
-
-    .stats{
+    .stats-grid{
         grid-template-columns:repeat(2,1fr);
     }
 
-    .two-col{
+    .quick-actions{
         grid-template-columns:1fr;
-    }
-
-    .sidebar{
-        width:210px;
-    }
-
-    .main{
-        margin-left:210px;
     }
 }
 
-@media(max-width:700px){
+@media(max-width:750px){
 
-    .college-header{
-        height:76px;
+    .top-header{
+        height:72px;
     }
 
-    .college-logo{
-        left:10px;
-        width:52px;
-        height:52px;
+    .logo-box{
+        width:auto;
+        padding-left:12px;
     }
 
-    .college-logo img{
-        width:50px;
-        height:50px;
-    }
-
-    .college-title{
-        padding:0 55px;
+    .logo-box img{
+        width:48px;
+        height:48px;
     }
 
     .college-title h1{
-        font-size:14px;
+        font-size:15px;
     }
 
     .college-title p{
         font-size:8px;
-        letter-spacing:.8px;
     }
 
     .sidebar{
@@ -526,48 +502,31 @@ td{
 
     .main{
         margin-left:0;
-        padding:100px 15px 85px;
+        padding:98px 15px 25px;
     }
 
-    .stats{
+    .mobile-menu{
+        top:72px;
+    }
+
+    .mobile-menu.show{
+        display:block;
+    }
+
+    .mobile-toggle{
+        display:block;
+    }
+
+    .stats-grid{
         grid-template-columns:1fr 1fr;
-        gap:10px;
-    }
-
-    .card{
-        padding:15px;
-    }
-
-    .stat-value{
-        font-size:23px;
     }
 
     .form-grid{
         grid-template-columns:1fr;
     }
 
-    .mobile-nav{
-        display:flex;
-        position:fixed;
-        bottom:0;
-        left:0;
-        right:0;
-        height:62px;
-        background:#102c21;
-        z-index:2000;
-        justify-content:space-around;
-        align-items:center;
-    }
-
-    .mobile-nav button{
-        background:none;
-        border:0;
-        color:#d5e2dc;
-        font-size:10px;
-    }
-
-    .mobile-nav button.active{
-        color:#69d69d;
+    .camera-box{
+        min-height:300px;
     }
 }
 </style>
@@ -575,13 +534,14 @@ td{
 
 <body>
 
-<!-- ================= COLLEGE HEADER ================= -->
+<!-- HEADER -->
+<header class="top-header">
 
-<header class="college-header">
-
-    <div class="college-logo">
-        <img src="assets/ndc-logo.jpeg"
-             alt="Nagarjuna Degree College Logo">
+    <div class="logo-box">
+        <img
+            src="./assets/ndc-logo.jpeg"
+            alt="Nagarjuna Degree College Logo"
+        >
     </div>
 
     <div class="college-title">
@@ -589,165 +549,165 @@ td{
         <p>AI FACE RECOGNITION ATTENDANCE SYSTEM</p>
     </div>
 
+    <button
+        class="mobile-toggle"
+        onclick="toggleMobileMenu()">
+        ☰
+    </button>
+
 </header>
 
 
-<!-- ================= SIDEBAR ================= -->
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
 
+    <button onclick="showPage('dashboard')">🏠 Dashboard</button>
+    <button onclick="showPage('attendance')">📷 Mark Attendance</button>
+    <button onclick="showPage('register')">👨‍🎓 Register Student</button>
+    <button onclick="showPage('students')">👥 Students</button>
+    <button onclick="showPage('records')">📋 Attendance Records</button>
+    <button onclick="showPage('reports')">📊 Reports</button>
+    <button onclick="showPage('diagnostics')">📷 Camera Diagnostics</button>
+    <button onclick="showPage('settings')">⚙️ Settings</button>
+
+</div>
+
+
+<!-- SIDEBAR -->
 <aside class="sidebar">
 
     <div class="brand-small">
-        <strong>AI ATTENDANCE</strong>
+        <h2>AI ATTENDANCE</h2>
         <span>Institution Management Portal</span>
     </div>
 
-    <div class="nav-title">MAIN MENU</div>
-
-    <button class="nav-btn active" onclick="showPage('dashboard',this)">
-        Dashboard
+    <button class="nav-item active"
+        onclick="showPage('dashboard',this)">
+        🏠 Dashboard
     </button>
 
-    <button class="nav-btn" onclick="showPage('attendance',this)">
-        Mark Attendance
+    <button class="nav-item"
+        onclick="showPage('attendance',this)">
+        📷 Mark Attendance
     </button>
 
-    <button class="nav-btn" onclick="showPage('register',this)">
-        Register Student
+    <button class="nav-item"
+        onclick="showPage('register',this)">
+        👨‍🎓 Register Student
     </button>
 
-    <button class="nav-btn" onclick="showPage('students',this)">
-        Students
+    <button class="nav-item"
+        onclick="showPage('students',this)">
+        👥 Students
     </button>
 
-    <button class="nav-btn" onclick="showPage('records',this)">
-        Attendance Records
+    <button class="nav-item"
+        onclick="showPage('records',this)">
+        📋 Attendance Records
     </button>
 
-    <div class="nav-title">ANALYTICS</div>
-
-    <button class="nav-btn" onclick="showPage('reports',this)">
-        Reports
+    <button class="nav-item"
+        onclick="showPage('reports',this)">
+        📊 Reports
     </button>
 
-    <div class="nav-title">SYSTEM</div>
-
-    <button class="nav-btn" onclick="showPage('diagnostics',this)">
-        Camera Diagnostics
+    <button class="nav-item"
+        onclick="showPage('diagnostics',this)">
+        📷 Camera Diagnostics
     </button>
 
-    <button class="nav-btn" onclick="showPage('settings',this)">
-        Settings
+    <button class="nav-item"
+        onclick="showPage('settings',this)">
+        ⚙️ Settings
     </button>
-
-    <div class="status-box">
-        <span class="status-dot"></span>
-        System Ready
-        <br>
-        <small id="modelStatus">Loading AI models...</small>
-    </div>
 
 </aside>
 
 
-<!-- ================= MAIN ================= -->
-
+<!-- MAIN -->
 <main class="main">
 
-<!-- DASHBOARD -->
 
+<!-- DASHBOARD -->
 <section id="dashboard" class="page active">
 
-    <div class="page-head">
+    <div class="page-title">
         <h2>Dashboard</h2>
-        <p>Attendance overview for Nagarjuna Degree College</p>
+        <p>Overview of today's attendance activity</p>
     </div>
 
-    <div class="grid stats">
+    <div class="stats-grid">
 
-        <div class="card">
-            <div class="stat-label">TOTAL STUDENTS</div>
-            <div class="stat-value" id="totalStudents">0</div>
-            <div class="stat-small">Registered students</div>
+        <div class="stat-card">
+            <div class="label">Total Students</div>
+            <h3 id="totalStudents">0</h3>
         </div>
 
-        <div class="card">
-            <div class="stat-label">PRESENT TODAY</div>
-            <div class="stat-value" id="presentToday">0</div>
-            <div class="stat-small">Attendance marked</div>
+        <div class="stat-card">
+            <div class="label">Present Today</div>
+            <h3 id="presentToday">0</h3>
         </div>
 
-        <div class="card">
-            <div class="stat-label">ABSENT TODAY</div>
-            <div class="stat-value" id="absentToday">0</div>
-            <div class="stat-small">Not marked</div>
+        <div class="stat-card">
+            <div class="label">Absent Today</div>
+            <h3 id="absentToday">0</h3>
         </div>
 
-        <div class="card">
-            <div class="stat-label">ATTENDANCE RATE</div>
-            <div class="stat-value" id="attendanceRate">0%</div>
-            <div class="stat-small">Today's percentage</div>
+        <div class="stat-card">
+            <div class="label">Attendance Rate</div>
+            <h3 id="attendanceRate">0%</h3>
         </div>
 
     </div>
 
-    <div class="grid two-col">
 
-        <div class="card">
+    <div class="card">
 
-            <div class="toolbar">
-                <div>
-                    <h3>Today's Attendance</h3>
-                    <small id="todayDate"></small>
-                </div>
-            </div>
+        <h3>Today's Attendance</h3>
 
-            <div class="table-wrap">
+        <div class="table-container">
 
-                <table>
+            <table>
 
-                    <thead>
-                        <tr>
-                            <th>STUDENT ID</th>
-                            <th>NAME</th>
-                            <th>TIME</th>
-                            <th>STATUS</th>
-                        </tr>
-                    </thead>
+                <thead>
+                    <tr>
+                        <th>Student ID</th>
+                        <th>Name</th>
+                        <th>Course</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
 
-                    <tbody id="todayTable"></tbody>
+                <tbody id="todayTable"></tbody>
 
-                </table>
-
-            </div>
+            </table>
 
         </div>
 
-        <div class="card">
+    </div>
 
-            <h3>Quick Actions</h3>
 
-            <div class="actions" style="margin-top:18px">
+    <div class="card">
 
-                <button class="btn btn-primary"
-                    onclick="showPage('attendance')">
-                    Mark Attendance
-                </button>
+        <h3>Quick Actions</h3>
 
-                <button class="btn btn-secondary"
-                    onclick="showPage('register')">
-                    Register Student
-                </button>
+        <div class="quick-actions">
 
-                <button class="btn btn-secondary"
-                    onclick="showPage('students')">
-                    View Students
-                </button>
+            <div class="quick-action"
+                onclick="showPage('attendance')">
+                📷 Mark Attendance
+            </div>
 
-                <button class="btn btn-secondary"
-                    onclick="exportCSV()">
-                    Export CSV
-                </button>
+            <div class="quick-action"
+                onclick="showPage('register')">
+                👨‍🎓 Register Student
+            </div>
 
+            <div class="quick-action"
+                onclick="showPage('reports')">
+                📊 View Reports
             </div>
 
         </div>
@@ -758,79 +718,61 @@ td{
 
 
 <!-- ATTENDANCE -->
-
 <section id="attendance" class="page">
 
-    <div class="page-head">
+    <div class="page-title">
         <h2>Mark Attendance</h2>
-        <p>Use face recognition to mark student attendance</p>
+        <p>Use the camera to recognize a registered student</p>
     </div>
 
-    <div id="attendanceAlert" class="alert"></div>
+    <div class="card camera-section">
 
-    <div class="grid two-col">
+        <h3>Live Camera</h3>
 
-        <div class="card">
+        <div class="camera-box">
 
-            <div class="camera-box">
+            <video
+                id="attendanceVideo"
+                autoplay
+                muted
+                playsinline>
+            </video>
 
-                <video id="attendanceVideo"
-                    autoplay
-                    muted
-                    playsinline></video>
+            <div
+                class="camera-placeholder"
+                id="attendancePlaceholder">
 
-                <div class="camera-label">
-                    LIVE CAMERA
+                <div class="camera-icon">📷</div>
+
+                <div>
+                    Camera is not started
                 </div>
-
-                <div class="camera-status"
-                    id="recognitionStatus">
-                    Camera not started
-                </div>
-
-            </div>
-
-            <div class="actions" style="margin-top:15px">
-
-                <button class="btn btn-primary"
-                    onclick="startAttendanceCamera()">
-                    Start Camera
-                </button>
-
-                <button class="btn btn-secondary"
-                    onclick="stopCamera()">
-                    Stop Camera
-                </button>
 
             </div>
 
         </div>
 
-        <div class="card">
+        <div class="camera-controls">
 
-            <h3>Recognition Result</h3>
+            <button
+                class="btn btn-primary"
+                onclick="startAttendanceCamera()">
+                Start Camera
+            </button>
 
-            <div id="identityResult"
-                class="identity"
-                style="margin-top:15px">
+            <button
+                class="btn btn-secondary"
+                onclick="stopCamera()">
+                Stop Camera
+            </button>
 
-                <h3>Waiting for face...</h3>
-                <p>Position your face inside the camera.</p>
+        </div>
 
-            </div>
+        <div
+            class="recognition-result"
+            id="recognitionResult">
 
-            <div style="margin-top:20px">
-
-                <h4>Instructions</h4>
-
-                <p style="font-size:12px;color:#68737d;margin-top:10px;line-height:1.8">
-                    1. Start the camera.<br>
-                    2. Look directly at the camera.<br>
-                    3. Registered students will be recognized automatically.<br>
-                    4. Attendance will be recorded once per day.
-                </p>
-
-            </div>
+            AI Recognition: Waiting for camera...
 
         </div>
 
@@ -840,98 +782,125 @@ td{
 
 
 <!-- REGISTER -->
-
 <section id="register" class="page">
 
-    <div class="page-head">
+    <div class="page-title">
         <h2>Register Student</h2>
-        <p>Register a student and capture their face data</p>
+        <p>Add a student and capture their face data</p>
     </div>
 
-    <div id="registerAlert" class="alert"></div>
+    <div class="card">
 
-    <div class="grid two-col">
+        <div class="form-grid">
 
-        <div class="card">
+            <div class="form-group">
+                <label>Student Name</label>
+                <input
+                    type="text"
+                    id="studentName"
+                    placeholder="Enter full name">
+            </div>
 
-            <h3>Student Information</h3>
+            <div class="form-group">
+                <label>Student ID</label>
+                <input
+                    type="text"
+                    id="studentId"
+                    placeholder="Example: NDC001">
+            </div>
 
-            <div class="form-grid" style="margin-top:18px">
+            <div class="form-group">
 
-                <div class="field">
-                    <label>FULL NAME</label>
-                    <input id="studentName"
-                        type="text"
-                        placeholder="Enter student name">
-                </div>
+                <label>Course</label>
 
-                <div class="field">
-                    <label>STUDENT ID</label>
-                    <input id="studentId"
-                        type="text"
-                        placeholder="Example: NDC2026001">
-                </div>
+                <select id="studentCourse">
 
-                <div class="field">
-                    <label>COURSE</label>
-                    <select id="studentCourse">
-                        <option value="">Select course</option>
-                        <option>BCA</option>
-                        <option>BCOM</option>
-                        <option>BBA</option>
-                        <option>BA</option>
-                        <option>BSC</option>
-                    </select>
-                </div>
+                    <option value="">
+                        Select Course
+                    </option>
 
-                <div class="field">
-                    <label>SECTION</label>
-                    <input id="studentSection"
-                        type="text"
-                        placeholder="Example: A">
-                </div>
+                    <option>BCA</option>
+                    <option>BCOM</option>
+                    <option>BBA</option>
+                    <option>BA</option>
+                    <option>BSC</option>
 
-                <div class="field">
-                    <label>EMAIL</label>
-                    <input id="studentEmail"
-                        type="email"
-                        placeholder="student@example.com">
+                </select>
+
+            </div>
+
+            <div class="form-group">
+                <label>Section</label>
+                <input
+                    type="text"
+                    id="studentSection"
+                    placeholder="Example: A">
+            </div>
+
+            <div class="form-group">
+                <label>Email</label>
+                <input
+                    type="email"
+                    id="studentEmail"
+                    placeholder="student@example.com">
+            </div>
+
+        </div>
+
+        <br>
+
+        <h3>Face Capture</h3>
+
+        <div class="camera-box">
+
+            <video
+                id="registerVideo"
+                autoplay
+                muted
+                playsinline>
+            </video>
+
+            <div
+                class="camera-placeholder"
+                id="registerPlaceholder">
+
+                <div class="camera-icon">👤</div>
+
+                <div>
+                    Start camera to capture face
                 </div>
 
             </div>
 
         </div>
 
-        <div class="card">
+        <div class="camera-controls">
 
-            <h3>Face Capture</h3>
+            <button
+                class="btn btn-primary"
+                onclick="startRegisterCamera()">
+                Start Camera
+            </button>
 
-            <div class="camera-box" style="margin-top:15px">
+            <button
+                class="btn btn-success"
+                onclick="captureStudent()">
+                Capture & Register
+            </button>
 
-                <video id="registerVideo"
-                    autoplay
-                    muted
-                    playsinline></video>
+            <button
+                class="btn btn-secondary"
+                onclick="stopCamera()">
+                Stop Camera
+            </button>
 
-                <div class="camera-label">
-                    REGISTRATION CAMERA
-                </div>
+        </div>
 
-            </div>
+        <div
+            class="recognition-result"
+            id="registerStatus">
 
-            <div class="actions" style="margin-top:15px">
-
-                <button class="btn btn-secondary"
-                    onclick="startRegisterCamera()">
-                    Start Camera
-                </button>
-
-                <button class="btn btn-primary"
-                    onclick="captureStudent()">
-                    Capture & Register
-                </button>
-
-            </div>
+            Face registration status: Waiting...
 
         </div>
 
@@ -941,10 +910,9 @@ td{
 
 
 <!-- STUDENTS -->
-
 <section id="students" class="page">
 
-    <div class="page-head">
+    <div class="page-title">
         <h2>Students</h2>
         <p>Manage registered students</p>
     </div>
@@ -953,30 +921,34 @@ td{
 
         <div class="toolbar">
 
-            <input class="search"
+            <input
+                class="search-input"
                 id="studentSearch"
                 placeholder="Search student..."
                 oninput="renderStudents()">
 
-            <button class="btn btn-primary"
+            <button
+                class="btn btn-primary"
                 onclick="showPage('register')">
+
                 + Register Student
+
             </button>
 
         </div>
 
-        <div class="table-wrap">
+        <div class="table-container">
 
             <table>
 
                 <thead>
                     <tr>
-                        <th>STUDENT ID</th>
-                        <th>NAME</th>
-                        <th>COURSE</th>
-                        <th>SECTION</th>
-                        <th>EMAIL</th>
-                        <th>ACTION</th>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Course</th>
+                        <th>Section</th>
+                        <th>Email</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
 
@@ -992,10 +964,9 @@ td{
 
 
 <!-- RECORDS -->
-
 <section id="records" class="page">
 
-    <div class="page-head">
+    <div class="page-title">
         <h2>Attendance Records</h2>
         <p>View and export attendance history</p>
     </div>
@@ -1004,35 +975,42 @@ td{
 
         <div class="toolbar">
 
-            <input class="search"
+            <input
+                class="search-input"
                 id="recordSearch"
                 placeholder="Search student..."
                 oninput="renderRecords()">
 
-            <input class="search"
-                id="recordDate"
+            <input
                 type="date"
+                class="search-input"
+                id="recordDate"
                 onchange="renderRecords()">
 
-            <button class="btn btn-primary"
+            <button
+                class="btn btn-primary"
                 onclick="exportCSV()">
+
                 Export CSV
+
             </button>
 
         </div>
 
-        <div class="table-wrap">
+        <div class="table-container">
 
             <table>
 
                 <thead>
+
                     <tr>
-                        <th>DATE</th>
-                        <th>TIME</th>
-                        <th>STUDENT ID</th>
-                        <th>NAME</th>
-                        <th>STATUS</th>
+                        <th>Student ID</th>
+                        <th>Name</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Status</th>
                     </tr>
+
                 </thead>
 
                 <tbody id="recordsTable"></tbody>
@@ -1047,47 +1025,54 @@ td{
 
 
 <!-- REPORTS -->
-
 <section id="reports" class="page">
 
-    <div class="page-head">
-        <h2>Attendance Reports</h2>
-        <p>Institution attendance analytics</p>
+    <div class="page-title">
+        <h2>Reports</h2>
+        <p>Attendance summary and student statistics</p>
     </div>
 
-    <div class="grid report-grid">
+    <div class="stats-grid">
 
-        <div class="card">
-            <div class="stat-label">TOTAL STUDENTS</div>
-            <div class="report-number" id="reportStudents">0</div>
+        <div class="stat-card">
+            <div class="label">Total Students</div>
+            <h3 id="reportTotal">0</h3>
         </div>
 
-        <div class="card">
-            <div class="stat-label">TOTAL ATTENDANCE</div>
-            <div class="report-number" id="reportAttendance">0</div>
+        <div class="stat-card">
+            <div class="label">Total Attendance</div>
+            <h3 id="reportAttendance">0</h3>
         </div>
 
-        <div class="card">
-            <div class="stat-label">DAYS RECORDED</div>
-            <div class="report-number" id="reportDays">0</div>
+        <div class="stat-card">
+            <div class="label">Today's Present</div>
+            <h3 id="reportToday">0</h3>
+        </div>
+
+        <div class="stat-card">
+            <div class="label">Overall Rate</div>
+            <h3 id="reportRate">0%</h3>
         </div>
 
     </div>
 
-    <div class="card" style="margin-top:20px">
+    <div class="card">
 
         <h3>Student Attendance Summary</h3>
 
-        <div class="table-wrap">
+        <div class="table-container">
 
             <table>
 
                 <thead>
+
                     <tr>
-                        <th>STUDENT ID</th>
-                        <th>NAME</th>
-                        <th>ATTENDANCE MARKED</th>
+                        <th>Student ID</th>
+                        <th>Name</th>
+                        <th>Course</th>
+                        <th>Attendance Count</th>
                     </tr>
+
                 </thead>
 
                 <tbody id="reportTable"></tbody>
@@ -1102,52 +1087,54 @@ td{
 
 
 <!-- DIAGNOSTICS -->
-
 <section id="diagnostics" class="page">
 
-    <div class="page-head">
+    <div class="page-title">
         <h2>Camera Diagnostics</h2>
-        <p>Test your device camera and AI recognition environment</p>
+        <p>Check whether your browser camera is working</p>
     </div>
-
-    <div id="diagnosticAlert" class="alert"></div>
 
     <div class="card">
 
-        <h3>Camera Test</h3>
+        <div class="diagnostic-box">
 
-        <div class="camera-box" style="margin-top:15px;max-width:700px">
+            <h3>Camera Test</h3>
 
-            <video id="testVideo"
-                autoplay
-                muted
-                playsinline></video>
+            <p>
+                Click the button and allow camera permission
+                when your browser asks.
+            </p>
 
-            <div class="camera-label">
-                CAMERA TEST
+            <br>
+
+            <button
+                class="btn btn-primary"
+                onclick="testCamera()">
+
+                Test Camera
+
+            </button>
+
+            <div
+                class="status"
+                id="cameraStatus">
+
+                Status: Not tested
+
             </div>
 
         </div>
 
-        <div class="actions" style="margin-top:15px">
+        <br>
 
-            <button class="btn btn-primary"
-                onclick="startTestCamera()">
-                Test Camera
-            </button>
+        <div class="camera-box">
 
-            <button class="btn btn-secondary"
-                onclick="stopCamera()">
-                Stop
-            </button>
-
-        </div>
-
-        <div class="identity">
-
-            <h3>System Information</h3>
-
-            <p id="deviceInfo">Checking device...</p>
+            <video
+                id="diagnosticVideo"
+                autoplay
+                muted
+                playsinline>
+            </video>
 
         </div>
 
@@ -1157,154 +1144,94 @@ td{
 
 
 <!-- SETTINGS -->
-
 <section id="settings" class="page">
 
-    <div class="page-head">
+    <div class="page-title">
         <h2>Settings</h2>
-        <p>System information and data management</p>
+        <p>Application settings and information</p>
     </div>
 
     <div class="card">
 
-        <h3>Nagarjuna Degree College</h3>
+        <h3>Application Information</h3>
 
-        <p style="font-size:13px;color:#68737d;margin-top:8px">
-            AI Face Recognition Attendance System
+        <p>
+            <strong>Institution:</strong>
+            Nagarjuna Degree College
         </p>
 
-        <div style="margin-top:20px">
+        <br>
 
-            <p style="font-size:12px;line-height:2">
-                <strong>Application:</strong> AI Attendance System<br>
-                <strong>Institution:</strong> Nagarjuna Degree College<br>
-                <strong>Recognition:</strong> Face Recognition AI<br>
-                <strong>Storage:</strong> Browser Local Storage
-            </p>
+        <p>
+            <strong>System:</strong>
+            AI Face Recognition Attendance
+        </p>
 
-        </div>
+        <br>
 
-        <hr style="margin:25px 0;border:0;border-top:1px solid #e5e8ea">
+        <p>
+            <strong>Version:</strong>
+            1.0
+        </p>
+
+        <br>
+
+        <p>
+            <strong>Storage:</strong>
+            Browser Local Storage
+        </p>
+
+    </div>
+
+    <div class="card">
 
         <h3>Data Management</h3>
 
-        <p style="font-size:12px;color:#68737d;margin:8px 0 15px">
-            Use this option only if you want to remove all locally stored
-            student and attendance data.
+        <p style="color:#718096;margin-bottom:15px;">
+            This removes students and attendance data stored
+            in this browser.
         </p>
 
-        <button class="btn btn-danger"
+        <button
+            class="btn btn-danger"
             onclick="clearAllData()">
-            Clear All Local Data
+
+            Clear Local Data
+
         </button>
 
     </div>
 
 </section>
 
+
+<div class="footer">
+    © 2026 Nagarjuna Degree College • AI Face Recognition Attendance System
+</div>
+
 </main>
-
-
-<!-- ================= MOBILE NAV ================= -->
-
-<nav class="mobile-nav">
-
-    <button class="active"
-        onclick="mobilePage('dashboard',this)">
-        Dashboard
-    </button>
-
-    <button onclick="mobilePage('attendance',this)">
-        Attendance
-    </button>
-
-    <button onclick="mobilePage('register',this)">
-        Register
-    </button>
-
-    <button onclick="mobilePage('students',this)">
-        Students
-    </button>
-
-    <button onclick="mobilePage('records',this)">
-        Records
-    </button>
-
-</nav>
 
 
 <script>
 
-/* ================= DATA ================= */
+/* DATA */
 
 let students =
-    JSON.parse(localStorage.getItem("face_students") || "[]");
+    JSON.parse(
+        localStorage.getItem("face_students") || "[]"
+    );
 
 let attendance =
-    JSON.parse(localStorage.getItem("face_attendance") || "[]");
+    JSON.parse(
+        localStorage.getItem("face_attendance") || "[]"
+    );
 
 let currentStream = null;
-let recognitionRunning = false;
-let modelsLoaded = false;
+
+let faceModelsLoaded = false;
 
 
-/* ================= PAGE NAVIGATION ================= */
-
-function showPage(page,btn){
-
-    document.querySelectorAll(".page")
-        .forEach(p => p.classList.remove("active"));
-
-    const target=document.getElementById(page);
-
-    if(target) target.classList.add("active");
-
-    document.querySelectorAll(".nav-btn")
-        .forEach(b => b.classList.remove("active"));
-
-    if(btn) btn.classList.add("active");
-
-    if(page==="dashboard") updateDashboard();
-    if(page==="students") renderStudents();
-    if(page==="records") renderRecords();
-    if(page==="reports") renderReports();
-
-    window.scrollTo({
-        top:0,
-        behavior:"smooth"
-    });
-}
-
-
-function mobilePage(page,btn){
-
-    document.querySelectorAll(".mobile-nav button")
-        .forEach(b=>b.classList.remove("active"));
-
-    btn.classList.add("active");
-
-    showPage(page);
-}
-
-
-/* ================= DATE ================= */
-
-function today(){
-
-    return new Date().toISOString().split("T")[0];
-
-}
-
-document.getElementById("todayDate").textContent =
-    new Date().toLocaleDateString("en-IN",{
-        weekday:"long",
-        year:"numeric",
-        month:"long",
-        day:"numeric"
-    });
-
-
-/* ================= SAVE ================= */
+/* SAVE */
 
 function saveData(){
 
@@ -1321,857 +1248,987 @@ function saveData(){
 }
 
 
-/* ================= ALERT ================= */
+/* NAVIGATION */
 
-function showAlert(id,message,type="success"){
+function showPage(pageId, clickedButton){
 
-    const el=document.getElementById(id);
+    document
+        .querySelectorAll(".page")
+        .forEach(page => {
+            page.classList.remove("active");
+        });
 
-    el.className="alert show "+type;
+    const page =
+        document.getElementById(pageId);
 
-    el.textContent=message;
-
-    setTimeout(()=>{
-        el.classList.remove("show");
-    },4000);
-
-}
-
-
-/* ================= LOAD MODELS ================= */
-
-async function loadModels(){
-
-    try{
-
-        const MODEL_URL =
-        "https://cdn.jsdelivr.net/gh/vladmandic/face-api@1.7.12/model";
-
-        document.getElementById("modelStatus")
-            .textContent="Loading AI models...";
-
-        await faceapi.nets.tinyFaceDetector.loadFromUri(MODEL_URL);
-
-        await faceapi.nets.faceLandmark68Net.loadFromUri(MODEL_URL);
-
-        await faceapi.nets.faceRecognitionNet.loadFromUri(MODEL_URL);
-
-        modelsLoaded=true;
-
-        document.getElementById("modelStatus")
-            .textContent="AI models ready";
-
-    }catch(error){
-
-        console.error(error);
-
-        document.getElementById("modelStatus")
-            .textContent="AI model loading failed";
-
+    if(page){
+        page.classList.add("active");
     }
 
+    document
+        .querySelectorAll(".nav-item")
+        .forEach(btn => {
+            btn.classList.remove("active");
+        });
+
+    if(clickedButton){
+        clickedButton.classList.add("active");
+    }
+
+    updateAll();
+
+    document
+        .getElementById("mobileMenu")
+        .classList.remove("show");
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
 }
 
 
-/* ================= CAMERA ================= */
+/* MOBILE MENU */
 
-async function getCamera(video){
+function toggleMobileMenu(){
 
-    try{
+    document
+        .getElementById("mobileMenu")
+        .classList.toggle("show");
 
-        if(currentStream){
-            currentStream.getTracks().forEach(t=>t.stop());
-        }
+}
 
-        currentStream =
-            await navigator.mediaDevices.getUserMedia({
-                video:{
-                    facingMode:"user",
-                    width:{ideal:1280},
-                    height:{ideal:720}
-                },
-                audio:false
-            });
 
-        video.srcObject=currentStream;
+/* TODAY */
 
-        await video.play();
+function todayDate(){
 
-        return true;
+    return new Date()
+        .toISOString()
+        .split("T")[0];
 
-    }catch(error){
+}
 
-        alert(
-            "Camera permission required.\n\n"+
-            error.message
+
+/* DASHBOARD */
+
+function updateDashboard(){
+
+    const today =
+        todayDate();
+
+    const todayAttendance =
+        attendance.filter(
+            a => a.date === today
         );
 
-        return false;
+    const total =
+        students.length;
+
+    const present =
+        todayAttendance.length;
+
+    const absent =
+        Math.max(0,total-present);
+
+    const rate =
+        total
+        ? Math.round(
+            (present/total)*100
+        )
+        : 0;
+
+    document.getElementById(
+        "totalStudents"
+    ).textContent = total;
+
+    document.getElementById(
+        "presentToday"
+    ).textContent = present;
+
+    document.getElementById(
+        "absentToday"
+    ).textContent = absent;
+
+    document.getElementById(
+        "attendanceRate"
+    ).textContent =
+        rate + "%";
+
+
+    const table =
+        document.getElementById(
+            "todayTable"
+        );
+
+    if(!todayAttendance.length){
+
+        table.innerHTML = `
+            <tr>
+                <td colspan="6" class="empty">
+                    No attendance recorded today.
+                </td>
+            </tr>
+        `;
+
+        return;
     }
+
+
+    table.innerHTML =
+        todayAttendance.map(a => {
+
+            const student =
+                students.find(
+                    s => s.id === a.studentId
+                );
+
+            return `
+                <tr>
+
+                    <td>${a.studentId}</td>
+
+                    <td>
+                        ${student
+                            ? student.name
+                            : "Unknown"}
+                    </td>
+
+                    <td>
+                        ${student
+                            ? student.course
+                            : "-"}
+                    </td>
+
+                    <td>${a.date}</td>
+
+                    <td>${a.time}</td>
+
+                    <td>
+                        <span class="badge badge-present">
+                            Present
+                        </span>
+                    </td>
+
+                </tr>
+            `;
+
+        }).join("");
 
 }
 
+
+/* STUDENTS */
+
+function renderStudents(){
+
+    const search =
+        (
+            document.getElementById(
+                "studentSearch"
+            )?.value || ""
+        ).toLowerCase();
+
+
+    const filtered =
+        students.filter(s => {
+
+            return (
+                s.name.toLowerCase()
+                    .includes(search) ||
+
+                s.id.toLowerCase()
+                    .includes(search) ||
+
+                s.course.toLowerCase()
+                    .includes(search)
+            );
+
+        });
+
+
+    const table =
+        document.getElementById(
+            "studentsTable"
+        );
+
+
+    if(!filtered.length){
+
+        table.innerHTML = `
+            <tr>
+                <td colspan="6" class="empty">
+                    No students found.
+                </td>
+            </tr>
+        `;
+
+        return;
+    }
+
+
+    table.innerHTML =
+        filtered.map(s => {
+
+            return `
+                <tr>
+
+                    <td>${s.id}</td>
+
+                    <td>${s.name}</td>
+
+                    <td>${s.course}</td>
+
+                    <td>${s.section}</td>
+
+                    <td>${s.email}</td>
+
+                    <td>
+
+                        <button
+                            class="btn btn-danger"
+                            onclick="deleteStudent('${s.id}')">
+
+                            Delete
+
+                        </button>
+
+                    </td>
+
+                </tr>
+            `;
+
+        }).join("");
+
+}
+
+
+/* DELETE */
+
+function deleteStudent(id){
+
+    if(!confirm("Delete this student?")){
+        return;
+    }
+
+    students =
+        students.filter(
+            s => s.id !== id
+        );
+
+    attendance =
+        attendance.filter(
+            a => a.studentId !== id
+        );
+
+    saveData();
+
+    updateAll();
+
+}
+
+
+/* REGISTER CAMERA */
 
 async function startRegisterCamera(){
 
-    const video =
-        document.getElementById("registerVideo");
+    try{
 
-    await getCamera(video);
+        stopCamera();
+
+        currentStream =
+            await navigator.mediaDevices
+                .getUserMedia({
+                    video:{
+                        facingMode:"user"
+                    },
+                    audio:false
+                });
+
+        const video =
+            document.getElementById(
+                "registerVideo"
+            );
+
+        video.srcObject =
+            currentStream;
+
+        document.getElementById(
+            "registerPlaceholder"
+        ).style.display =
+            "none";
+
+        document.getElementById(
+            "registerStatus"
+        ).textContent =
+            "Camera active. Position your face clearly and click Capture & Register.";
+
+    }
+    catch(error){
+
+        document.getElementById(
+            "registerStatus"
+        ).textContent =
+            "Camera error: " +
+            error.message;
+
+    }
 
 }
 
+
+/* ATTENDANCE CAMERA */
 
 async function startAttendanceCamera(){
 
-    const video =
-        document.getElementById("attendanceVideo");
+    try{
 
-    const success =
-        await getCamera(video);
+        stopCamera();
 
-    if(success){
+        currentStream =
+            await navigator.mediaDevices
+                .getUserMedia({
+                    video:{
+                        facingMode:"user"
+                    },
+                    audio:false
+                });
 
-        document.getElementById("recognitionStatus")
-            .textContent="Scanning for faces...";
+        const video =
+            document.getElementById(
+                "attendanceVideo"
+            );
 
-        recognitionRunning=true;
+        video.srcObject =
+            currentStream;
 
-        recognitionLoop();
+        document.getElementById(
+            "attendancePlaceholder"
+        ).style.display =
+            "none";
+
+        document.getElementById(
+            "recognitionResult"
+        ).textContent =
+            "Camera active. Face recognition is ready.";
+
+    }
+    catch(error){
+
+        document.getElementById(
+            "recognitionResult"
+        ).textContent =
+            "Camera error: " +
+            error.message;
 
     }
 
 }
 
 
-async function startTestCamera(){
-
-    const video =
-        document.getElementById("testVideo");
-
-    const success =
-        await getCamera(video);
-
-    if(success){
-
-        document.getElementById("deviceInfo")
-            .textContent=
-            "Camera access successful. Device: "+
-            navigator.userAgent;
-
-    }
-
-}
-
+/* STOP CAMERA */
 
 function stopCamera(){
-
-    recognitionRunning=false;
 
     if(currentStream){
 
         currentStream
             .getTracks()
-            .forEach(track=>track.stop());
+            .forEach(track => {
+                track.stop();
+            });
 
-        currentStream=null;
+        currentStream = null;
+
     }
 
 }
 
 
-/* ================= FACE DESCRIPTOR ================= */
-
-async function getDescriptor(video){
-
-    if(!modelsLoaded){
-
-        showAlert(
-            "registerAlert",
-            "AI models are still loading. Please wait.",
-            "info"
-        );
-
-        return null;
-    }
-
-    const detection =
-        await faceapi
-        .detectSingleFace(
-            video,
-            new faceapi.TinyFaceDetectorOptions({
-                inputSize:320,
-                scoreThreshold:.5
-            })
-        )
-        .withFaceLandmarks()
-        .withFaceDescriptor();
-
-    return detection;
-
-}
-
-
-/* ================= REGISTER STUDENT ================= */
+/* CAPTURE STUDENT */
 
 async function captureStudent(){
 
     const name =
-        document.getElementById("studentName").value.trim();
+        document.getElementById(
+            "studentName"
+        ).value.trim();
 
     const id =
-        document.getElementById("studentId").value.trim();
+        document.getElementById(
+            "studentId"
+        ).value.trim();
 
     const course =
-        document.getElementById("studentCourse").value;
+        document.getElementById(
+            "studentCourse"
+        ).value;
 
     const section =
-        document.getElementById("studentSection").value.trim();
+        document.getElementById(
+            "studentSection"
+        ).value.trim();
 
     const email =
-        document.getElementById("studentEmail").value.trim();
+        document.getElementById(
+            "studentEmail"
+        ).value.trim();
 
-    if(!name || !id || !course){
 
-        showAlert(
-            "registerAlert",
-            "Please enter student name, ID and course.",
-            "error"
+    if(!name || !id || !course || !section){
+
+        alert(
+            "Please fill all required fields."
         );
 
         return;
+
     }
 
-    if(students.some(s=>s.id.toLowerCase()===id.toLowerCase())){
 
-        showAlert(
-            "registerAlert",
-            "Student ID already exists.",
-            "error"
+    if(
+        students.some(
+            s => s.id === id
+        )
+    ){
+
+        alert(
+            "Student ID already exists."
         );
 
         return;
+
     }
+
 
     const video =
-        document.getElementById("registerVideo");
-
-    if(!video.srcObject){
-
-        showAlert(
-            "registerAlert",
-            "Start the camera first.",
-            "error"
+        document.getElementById(
+            "registerVideo"
         );
 
-        return;
-    }
+
+    let descriptor = null;
+
 
     try{
 
-        const detection =
-            await getDescriptor(video);
-
-        if(!detection){
-
-            showAlert(
-                "registerAlert",
-                "No face detected. Please look at the camera clearly.",
-                "error"
-            );
-
-            return;
-        }
-
-        const student={
-
-            id,
-            name,
-            course,
-            section,
-            email,
-
-            descriptor:
-                Array.from(detection.descriptor),
-
-            registeredAt:
-                new Date().toISOString()
-
-        };
-
-        students.push(student);
-
-        saveData();
-
-        document.getElementById("studentName").value="";
-        document.getElementById("studentId").value="";
-        document.getElementById("studentCourse").value="";
-        document.getElementById("studentSection").value="";
-        document.getElementById("studentEmail").value="";
-
-        showAlert(
-            "registerAlert",
-            name+" registered successfully.",
-            "success"
-        );
-
-        updateDashboard();
-
-    }catch(error){
-
-        console.error(error);
-
-        showAlert(
-            "registerAlert",
-            "Face registration failed.",
-            "error"
-        );
-
-    }
-
-}
-
-
-/* ================= RECOGNITION ================= */
-
-async function recognitionLoop(){
-
-    if(!recognitionRunning) return;
-
-    const video =
-        document.getElementById("attendanceVideo");
-
-    if(video.readyState>=2){
-
-        try{
+        if(faceModelsLoaded){
 
             const detection =
-                await getDescriptor(video);
+                await faceapi
+                    .detectSingleFace(
+                        video,
+                        new faceapi.TinyFaceDetectorOptions()
+                    )
+                    .withFaceLandmarks()
+                    .withFaceDescriptor();
+
 
             if(detection){
 
-                let bestStudent=null;
-                let bestDistance=Infinity;
-
-                for(const student of students){
-
-                    if(!student.descriptor) continue;
-
-                    const distance =
-                        faceapi.euclideanDistance(
-                            detection.descriptor,
-                            student.descriptor
-                        );
-
-                    if(distance<bestDistance){
-
-                        bestDistance=distance;
-                        bestStudent=student;
-
-                    }
-
-                }
-
-                if(bestStudent && bestDistance<0.50){
-
-                    document.getElementById(
-                        "recognitionStatus"
-                    ).textContent =
-                    "Recognized: "+
-                    bestStudent.name;
-
-                    showIdentity(
-                        bestStudent,
-                        bestDistance
+                descriptor =
+                    Array.from(
+                        detection.descriptor
                     );
 
-                    markAttendance(bestStudent);
-
-                }else{
-
-                    document.getElementById(
-                        "recognitionStatus"
-                    ).textContent =
-                    "Face detected — student not recognized.";
-
-                }
-
             }
-
-        }catch(error){
-
-            console.error(error);
 
         }
 
     }
+    catch(error){
 
-    setTimeout(recognitionLoop,1000);
+        console.log(error);
 
-}
-
-
-/* ================= IDENTITY ================= */
-
-function showIdentity(student,distance){
-
-    document.getElementById(
-        "identityResult"
-    ).innerHTML=`
-
-        <h3>${escapeHTML(student.name)}</h3>
-
-        <p>
-            Student ID: ${escapeHTML(student.id)}
-        </p>
-
-        <p>
-            Course: ${escapeHTML(student.course)}
-        </p>
-
-        <p>
-            Recognition confidence:
-            ${(100-(distance*100)).toFixed(1)}%
-        </p>
-
-    `;
-
-}
+    }
 
 
-/* ================= ATTENDANCE ================= */
+    students.push({
 
-function markAttendance(student){
-
-    const date=today();
-
-    const alreadyMarked =
-        attendance.some(a =>
-            a.studentId===student.id &&
-            a.date===date
-        );
-
-    if(alreadyMarked) return;
-
-    const now=new Date();
-
-    attendance.push({
-
-        studentId:student.id,
-        name:student.name,
-        date,
-        time:now.toLocaleTimeString("en-IN",{
-            hour:"2-digit",
-            minute:"2-digit"
-        }),
-        status:"Present"
+        id:id,
+        name:name,
+        course:course,
+        section:section,
+        email:email,
+        descriptor:descriptor
 
     });
 
+
     saveData();
 
-    showAlert(
-        "attendanceAlert",
-        student.name+" marked Present.",
-        "success"
-    );
 
-    updateDashboard();
-
-}
+    document.getElementById(
+        "registerStatus"
+    ).textContent =
+        descriptor
+        ? "Student registered successfully with face data."
+        : "Student registered, but face data was not captured.";
 
 
-/* ================= DASHBOARD ================= */
+    document.getElementById(
+        "studentName"
+    ).value = "";
 
-function updateDashboard(){
+    document.getElementById(
+        "studentId"
+    ).value = "";
 
-    const date=today();
+    document.getElementById(
+        "studentCourse"
+    ).value = "";
 
-    const present =
-        attendance.filter(a=>a.date===date).length;
+    document.getElementById(
+        "studentSection"
+    ).value = "";
 
-    const total=students.length;
+    document.getElementById(
+        "studentEmail"
+    ).value = "";
 
-    const absent =
-        Math.max(total-present,0);
 
-    const rate =
-        total ? Math.round((present/total)*100) : 0;
-
-    document.getElementById("totalStudents")
-        .textContent=total;
-
-    document.getElementById("presentToday")
-        .textContent=present;
-
-    document.getElementById("absentToday")
-        .textContent=absent;
-
-    document.getElementById("attendanceRate")
-        .textContent=rate+"%";
-
-    const table =
-        document.getElementById("todayTable");
-
-    const rows =
-        attendance.filter(a=>a.date===date);
-
-    if(!rows.length){
-
-        table.innerHTML=`
-            <tr>
-                <td colspan="4"
-                    style="text-align:center;color:#89939a">
-                    No attendance marked today
-                </td>
-            </tr>
-        `;
-
-        return;
-    }
-
-    table.innerHTML=rows.map(a=>`
-
-        <tr>
-
-            <td>${escapeHTML(a.studentId)}</td>
-
-            <td>${escapeHTML(a.name)}</td>
-
-            <td>${escapeHTML(a.time)}</td>
-
-            <td>
-                <span class="badge present">
-                    Present
-                </span>
-            </td>
-
-        </tr>
-
-    `).join("");
+    updateAll();
 
 }
 
 
-/* ================= STUDENTS ================= */
+/* LOAD FACE MODELS */
 
-function renderStudents(){
+async function loadFaceModels(){
 
-    const search =
-        (document.getElementById("studentSearch")?.value || "")
-        .toLowerCase();
+    const MODEL_URL =
+        "https://cdn.jsdelivr.net/gh/vladmandic/face-api@1.7.12/model";
 
-    const filtered =
-        students.filter(s =>
-            s.name.toLowerCase().includes(search) ||
-            s.id.toLowerCase().includes(search)
+
+    try{
+
+        await faceapi.nets
+            .tinyFaceDetector
+            .loadFromUri(MODEL_URL);
+
+        await faceapi.nets
+            .faceLandmark68Net
+            .loadFromUri(MODEL_URL);
+
+        await faceapi.nets
+            .faceRecognitionNet
+            .loadFromUri(MODEL_URL);
+
+
+        faceModelsLoaded = true;
+
+        console.log(
+            "Face recognition models loaded successfully."
         );
 
-    const table =
-        document.getElementById("studentsTable");
+    }
+    catch(error){
 
-    if(!filtered.length){
+        console.error(
+            "Face model loading failed:",
+            error
+        );
 
-        table.innerHTML=`
-            <tr>
-                <td colspan="6"
-                    style="text-align:center;color:#89939a">
-                    No students found
-                </td>
-            </tr>
-        `;
-
-        return;
     }
 
-    table.innerHTML=filtered.map(s=>`
-
-        <tr>
-
-            <td>${escapeHTML(s.id)}</td>
-
-            <td>${escapeHTML(s.name)}</td>
-
-            <td>${escapeHTML(s.course)}</td>
-
-            <td>${escapeHTML(s.section || "-")}</td>
-
-            <td>${escapeHTML(s.email || "-")}</td>
-
-            <td>
-
-                <button
-                    class="btn btn-danger"
-                    onclick="deleteStudent('${encodeURIComponent(s.id)}')">
-                    Delete
-                </button>
-
-            </td>
-
-        </tr>
-
-    `).join("");
-
 }
 
 
-function deleteStudent(encodedId){
-
-    const id=decodeURIComponent(encodedId);
-
-    const student =
-        students.find(s=>s.id===id);
-
-    if(!student) return;
-
-    if(!confirm(
-        "Delete "+student.name+" from registered students?"
-    )) return;
-
-    students =
-        students.filter(s=>s.id!==id);
-
-    saveData();
-
-    renderStudents();
-    updateDashboard();
-
-}
-
-
-/* ================= RECORDS ================= */
+/* RECORDS */
 
 function renderRecords(){
 
     const search =
-        (document.getElementById("recordSearch")?.value || "")
-        .toLowerCase();
+        (
+            document.getElementById(
+                "recordSearch"
+            )?.value || ""
+        ).toLowerCase();
+
 
     const selectedDate =
-        document.getElementById("recordDate")?.value || "";
+        document.getElementById(
+            "recordDate"
+        )?.value || "";
 
-    let rows=attendance;
 
-    if(search){
+    const filtered =
+        attendance.filter(a => {
 
-        rows=rows.filter(a =>
-            a.name.toLowerCase().includes(search) ||
-            a.studentId.toLowerCase().includes(search)
-        );
+            const student =
+                students.find(
+                    s => s.id === a.studentId
+                );
 
-    }
+            const name =
+                student?.name?.toLowerCase()
+                || "";
 
-    if(selectedDate){
 
-        rows=rows.filter(a =>
-            a.date===selectedDate
-        );
+            const matchesSearch =
+                a.studentId
+                    .toLowerCase()
+                    .includes(search)
+                ||
+                name.includes(search);
 
-    }
 
-    rows=[...rows].reverse();
+            const matchesDate =
+                !selectedDate ||
+                a.date === selectedDate;
+
+
+            return (
+                matchesSearch &&
+                matchesDate
+            );
+
+        });
+
 
     const table =
-        document.getElementById("recordsTable");
+        document.getElementById(
+            "recordsTable"
+        );
 
-    if(!rows.length){
 
-        table.innerHTML=`
+    if(!filtered.length){
+
+        table.innerHTML = `
             <tr>
-                <td colspan="5"
-                    style="text-align:center;color:#89939a">
-                    No attendance records found
+                <td colspan="5" class="empty">
+                    No attendance records found.
                 </td>
             </tr>
         `;
 
         return;
+
     }
 
-    table.innerHTML=rows.map(a=>`
 
-        <tr>
+    table.innerHTML =
+        filtered.map(a => {
 
-            <td>${escapeHTML(a.date)}</td>
+            const student =
+                students.find(
+                    s => s.id === a.studentId
+                );
 
-            <td>${escapeHTML(a.time)}</td>
+            return `
+                <tr>
 
-            <td>${escapeHTML(a.studentId)}</td>
+                    <td>${a.studentId}</td>
 
-            <td>${escapeHTML(a.name)}</td>
+                    <td>
+                        ${student
+                            ? student.name
+                            : "Unknown"}
+                    </td>
 
-            <td>
-                <span class="badge present">
-                    Present
-                </span>
-            </td>
+                    <td>${a.date}</td>
 
-        </tr>
+                    <td>${a.time}</td>
 
-    `).join("");
+                    <td>
+                        <span class="badge badge-present">
+                            Present
+                        </span>
+                    </td>
+
+                </tr>
+            `;
+
+        }).join("");
 
 }
 
 
-/* ================= REPORTS ================= */
+/* REPORTS */
 
 function renderReports(){
 
-    document.getElementById("reportStudents")
-        .textContent=students.length;
+    const total =
+        students.length;
 
-    document.getElementById("reportAttendance")
-        .textContent=attendance.length;
+    const totalAttendance =
+        attendance.length;
 
-    const dates =
-        [...new Set(attendance.map(a=>a.date))];
+    const today =
+        attendance.filter(
+            a => a.date === todayDate()
+        ).length;
 
-    document.getElementById("reportDays")
-        .textContent=dates.length;
+    const rate =
+        total
+        ? Math.round(
+            (today/total)*100
+        )
+        : 0;
+
+
+    document.getElementById(
+        "reportTotal"
+    ).textContent = total;
+
+    document.getElementById(
+        "reportAttendance"
+    ).textContent =
+        totalAttendance;
+
+    document.getElementById(
+        "reportToday"
+    ).textContent =
+        today;
+
+    document.getElementById(
+        "reportRate"
+    ).textContent =
+        rate + "%";
+
 
     const table =
-        document.getElementById("reportTable");
+        document.getElementById(
+            "reportTable"
+        );
 
-    table.innerHTML=students.map(s=>{
 
-        const count =
-            attendance.filter(
-                a=>a.studentId===s.id
-            ).length;
+    if(!students.length){
 
-        return `
-
+        table.innerHTML = `
             <tr>
-
-                <td>${escapeHTML(s.id)}</td>
-
-                <td>${escapeHTML(s.name)}</td>
-
-                <td>${count}</td>
-
+                <td colspan="4" class="empty">
+                    No students registered.
+                </td>
             </tr>
-
         `;
 
-    }).join("");
+        return;
+
+    }
+
+
+    table.innerHTML =
+        students.map(s => {
+
+            const count =
+                attendance.filter(
+                    a => a.studentId === s.id
+                ).length;
+
+
+            return `
+                <tr>
+
+                    <td>${s.id}</td>
+
+                    <td>${s.name}</td>
+
+                    <td>${s.course}</td>
+
+                    <td>${count}</td>
+
+                </tr>
+            `;
+
+        }).join("");
 
 }
 
 
-/* ================= CSV ================= */
+/* CAMERA TEST */
+
+async function testCamera(){
+
+    const status =
+        document.getElementById(
+            "cameraStatus"
+        );
+
+    const video =
+        document.getElementById(
+            "diagnosticVideo"
+        );
+
+
+    try{
+
+        const stream =
+            await navigator.mediaDevices
+                .getUserMedia({
+                    video:true,
+                    audio:false
+                });
+
+        video.srcObject =
+            stream;
+
+        status.textContent =
+            "Status: Camera working successfully ✅";
+
+        status.style.color =
+            "#198754";
+
+    }
+    catch(error){
+
+        status.textContent =
+            "Status: Camera failed ❌ " +
+            error.message;
+
+        status.style.color =
+            "#dc3545";
+
+    }
+
+}
+
+
+/* CSV */
 
 function exportCSV(){
 
     if(!attendance.length){
 
-        alert("No attendance records available.");
+        alert(
+            "No attendance records available."
+        );
 
         return;
+
     }
 
-    let csv=
-    "Date,Time,Student ID,Name,Status\n";
 
-    attendance.forEach(a=>{
+    let csv =
+        "Student ID,Name,Date,Time,Status\n";
+
+
+    attendance.forEach(a => {
+
+        const student =
+            students.find(
+                s => s.id === a.studentId
+            );
+
 
         csv +=
-        `"${a.date}","${a.time}","${a.studentId}","${a.name}","${a.status}"\n`;
+            `"${a.studentId}","${student?.name || "Unknown"}","${a.date}","${a.time}","Present"\n`;
 
     });
 
+
     const blob =
-        new Blob([csv],{
-            type:"text/csv;charset=utf-8;"
-        });
+        new Blob(
+            [csv],
+            {type:"text/csv"}
+        );
+
 
     const url =
         URL.createObjectURL(blob);
 
-    const link =
+
+    const a =
         document.createElement("a");
 
-    link.href=url;
+    a.href = url;
 
-    link.download=
-        "NDC_Attendance_"+today()+".csv";
+    a.download =
+        "attendance-records.csv";
 
-    link.click();
+    a.click();
 
     URL.revokeObjectURL(url);
 
 }
 
 
-/* ================= CLEAR DATA ================= */
+/* CLEAR DATA */
 
 function clearAllData(){
 
     if(!confirm(
         "This will delete all students and attendance records. Continue?"
-    )) return;
+    )){
+        return;
+    }
 
-    students=[];
-    attendance=[];
+
+    students = [];
+
+    attendance = [];
 
     saveData();
 
+    updateAll();
+
+    alert(
+        "All local data cleared."
+    );
+
+}
+
+
+/* UPDATE */
+
+function updateAll(){
+
     updateDashboard();
+
     renderStudents();
+
     renderRecords();
+
     renderReports();
 
-    alert("All local data cleared.");
-
 }
 
 
-/* ================= SECURITY HELPER ================= */
-
-function escapeHTML(value){
-
-    return String(value ?? "")
-        .replace(/&/g,"&amp;")
-        .replace(/</g,"&lt;")
-        .replace(/>/g,"&gt;")
-        .replace(/"/g,"&quot;")
-        .replace(/'/g,"&#039;");
-
-}
-
-
-/* ================= INIT ================= */
-
-document.getElementById("recordDate").value=today();
-
-updateDashboard();
-renderStudents();
-renderRecords();
-renderReports();
-
-loadModels();
-
-
-/* ================= PWA ================= */
+/* SERVICE WORKER */
 
 if("serviceWorker" in navigator){
 
-    window.addEventListener("load",()=>{
+    window.addEventListener(
+        "load",
+        () => {
 
-        navigator.serviceWorker
-            .register("./sw.js")
-            .then(()=>{
-                console.log("Service Worker registered");
-            })
-            .catch(err=>{
-                console.log(
-                    "Service Worker error:",
-                    err
-                );
-            });
+            navigator.serviceWorker
+                .register("./sw.js")
+                .then(() => {
 
-    });
+                    console.log(
+                        "Service Worker registered."
+                    );
+
+                })
+                .catch(error => {
+
+                    console.log(
+                        "Service Worker error:",
+                        error
+                    );
+
+                });
+
+        }
+    );
 
 }
+
+
+/* START */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    () => {
+
+        updateAll();
+
+        loadFaceModels();
+
+    }
+);
 
 </script>
 
