@@ -4,7 +4,7 @@ const APP_FILES = [
     "./",
     "./index.html",
     "./manifest.json",
-    "./assets/ndc-logo.jpg"
+    "./assets/ndc-logo.jpeg"
 ];
 
 
